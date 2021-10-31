@@ -1,38 +1,61 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class TicTacToeGame
+class TicTacToeGame
 {
-    static final char var = chooseuserLetter();         //storing charecter store by user var variable
-    static char board[]= new char[10] ;
-
+    static final char var = chooseuserLetter();                    //intialising var with letter choosen by user
+    static char board[]= new char[10] ;                         //creating char array of board
     static char computerLetter = (var == 'X') ? 'O' : 'X';      //intializing which chareceter computer should use
 
-
-    public static void main(String[] args){
-        for (int i =0;i<=9;i++)
-        {
-            board[i]=' ';
+    public static void main(String[] args) {
+        for (int i = 0; i <= 9; i++) {
+            board[i] = ' ';                     //creating empty array
         }
-        for( int i =0;i<=9;i++)0
+        Random ran = new Random();
+        int l =ran.nextInt(2);                      //taking random variable to decide who will play first
+        if (l==0)
         {
-            showBoard(board);                           //calling showBoard method to show game board to user befor move
-            Scanner sc = new Scanner(System.in);
-            int k = sc.nextInt();                        //taking input from user to move to which position
-            if (board[k] == ' ') {
-                board[k] = var;
-                board[computerChoice()] = computerLetter;
-                showBoard(board);
+            for (int i = 0; i <= 9; i++) {               // when user play first
+                showboard(board);
+                Scanner sc = new Scanner(System.in);
+                int k = sc.nextInt();
+                if (board[i] == ' ')
+                {
+                    board[k] = var;
+                    board[computerChoice()] = computerLetter;
+                    showboard(board);
+                }
+                else
+                {
+                    System.out.println("Enter another  Position");
+                }
             }
-            else
-            {
-                System.out.println("Enter another  Position");
+        }
+        else
+        {
+            for (int i = 0; i <= 9; i++) {                  //when computer play first
+                showboard(board);
+                Scanner sc = new Scanner(System.in);
+                board[computerChoice()] = computerLetter;
+                showboard(board);
+                int k = sc.nextInt();
+                if (board[i] == ' ')
+                {
+                    board[k] = var;
+                    showboard(board);
+                }
+                else
+                {
+                    System.out.println("Enter another  Position");
+                }
             }
         }
     }
+
     /*
-     * Creating chooseLetter() method to choose which symbol user method
+     * Creating chooseuserLetter() method to choose which symbol user method
      * */
+
     public static char chooseuserLetter(){
         char user;
 
@@ -46,7 +69,6 @@ public class TicTacToeGame
      * Creating computerChoice() method to get which position would computer want move
      * */
 
-
     public static int computerChoice(){
         int k=1;
         Random ran = new Random();
@@ -54,10 +76,8 @@ public class TicTacToeGame
         if (board[i] == ' ') {
             board[i] = computerLetter;
         }
-
         else
         {
-
             i = ran.nextInt(9) + 1;
 
             if (board[i] == ' ')
@@ -77,7 +97,8 @@ public class TicTacToeGame
     /*
      * Creating showBoard() method to show TicTacToe board after every move
      * */
-    public static void showBoard(char[] board) {
+
+    public static void showboard(char[] board) {
         System.out.println("\n" + "Displaying the Tic Tac Toe Board");
         System.out.println(board[1] + " | " + board[2] + " | " + board[3]);
         System.out.println("-----------");
