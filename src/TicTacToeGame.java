@@ -1,21 +1,23 @@
-import java.util.Scanner;
-class TicTacToeGame
-{
-    public static void main(String[] args){
 
-        char computerLetter = (chooseuserLetter() == 'X') ? 'O' : 'X';      //intializing which chareceter computer should use
+class TicTacToeUC3
+{
+    public static void main(String[] args)
+    {
+        showBoard();                                        //Calling showBoard() method
+
     }
+
     /*
-     * creating chooseuserLetter() method to get which symbol does user want
+     * Creating showBoard() method to show TicTacToe game board to user
      * */
 
-    public static char chooseuserLetter(){
-        char user;
+    public static void showBoard(){
+        System.out.println("board 1 "+" | "+"board 2 "+ " | "+ " board 3 ");
+        System.out.println("-------------------------------   ");
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your Symbol X or O");
-        user = sc.next().charAt(0);                         // taking user input
+        System.out.println("board 4 "+" | "+"board 5 "+ " | "+ " board 6 ");
+        System.out.println("-------------------------------");
 
-        return (user);
+        System.out.println("board 7 "+" | "+"board 8 "+ " | "+ " board 9 ");
     }
 }
