@@ -16,9 +16,9 @@ public class TicTacToeGame
         }
         for( int i =0;i<=9;i++)0
         {
-            showBoard(board);                           //calling showBoard method to show game board to user befor move
-            Scanner sc = new Scanner(System.in);
-            int k = sc.nextInt();                        //taking input from user to move to which position
+                showBoard(board);                           //calling showBoard method to show game board to user befor move
+                Scanner sc = new Scanner(System.in);
+                int k = sc.nextInt();                        //taking input from user to move to which position
             if (board[k] == ' ') {
                 board[k] = var;
                 board[computerChoice()] = computerLetter;
@@ -31,8 +31,8 @@ public class TicTacToeGame
         }
     }
     /*
-     * Creating chooseLetter() method to choose which symbol user method
-     * */
+    * Creating chooseLetter() method to choose which symbol user method
+    * */
     public static char chooseuserLetter(){
         char user;
 
@@ -43,40 +43,40 @@ public class TicTacToeGame
         return (user);
     }
     /*
-     * Creating computerChoice() method to get which position would computer want move
-     * */
+    * Creating computerChoice() method to get which position would computer want move
+    * */
 
 
     public static int computerChoice(){
         int k=1;
         Random ran = new Random();
         int i = ran.nextInt(9)+1;
-        if (board[i] == ' ') {
-            board[i] = computerLetter;
-        }
-
-        else
-        {
-
-            i = ran.nextInt(9) + 1;
-
-            if (board[i] == ' ')
-            {
+            if (board[i] == ' ') {
                 board[i] = computerLetter;
             }
+
             else
             {
+
                 i = ran.nextInt(9) + 1;
-                board[i] = computerLetter;
+
+                if (board[i] == ' ')
+                {
+                    board[i] = computerLetter;
+                }
+                else
+                {
+                    i = ran.nextInt(9) + 1;
+                    board[i] = computerLetter;
+                }
             }
-        }
-        k++;
-        return i;
+            k++;
+            return i;
     }
 
     /*
-     * Creating showBoard() method to show TicTacToe board after every move
-     * */
+    * Creating showBoard() method to show TicTacToe board after every move
+    * */
     public static void showBoard(char[] board) {
         System.out.println("\n" + "Displaying the Tic Tac Toe Board");
         System.out.println(board[1] + " | " + board[2] + " | " + board[3]);
